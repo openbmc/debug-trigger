@@ -1,0 +1,7 @@
+Code-Review+2: Andrew Jeffery <andrew@aj.id.au>
+Verified+1: Andrew Jeffery <andrew@aj.id.au>
+Submitted-by: Andrew Jeffery <andrew@aj.id.au>
+Submitted-at: Thu, 10 Jun 2021 04:38:43 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/debug-trigger/+/43940
+Project: openbmc/debug-trigger
+Branch: refs/heads/master
