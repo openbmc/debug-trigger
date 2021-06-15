@@ -1,0 +1,9 @@
+Ok-To-Test+1: Andrew Jeffery <andrew@aj.id.au>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+1: Patrick Williams <patrick@stwcx.xyz>
+Code-Review+2: Andrew Jeffery <andrew@aj.id.au>
+Submitted-by: Andrew Jeffery <andrew@aj.id.au>
+Submitted-at: Tue, 15 Jun 2021 21:01:17 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/debug-trigger/+/44061
+Project: openbmc/debug-trigger
+Branch: refs/heads/master
