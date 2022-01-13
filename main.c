@@ -94,12 +94,15 @@ int main(int argc, char * const argv[])
 	struct debug_sink_sysrq sysrq;
 	struct debug_sink sink;
 	char devnode[PATH_MAX];
+	const char *sink_name;
 	char *devid;
 	int sourcefd;
 	int sinkfd;
 
+	sink_name = NULL;
 	while (1) {
 		static struct option long_options[] = {
+			{"sink", required_argument, 0, 's'},
 			{0, 0, 0, 0},
 		};
 		int c;
@@ -107,6 +110,14 @@ int main(int argc, char * const argv[])
 		c = getopt_long(argc, argv, "", long_options, NULL);
 		if (c == -1)
 			break;
+
+		switch (c) {
+		case 's':
+			sink_name = optarg;
+			break;
+		default:
+			break;
+		}
 	}
 
 	sourcefd = 0;
@@ -129,19 +140,22 @@ int main(int argc, char * const argv[])
 		optind++;
 	}
 
-	if (optind < argc) {
-		if ((sinkfd = open(argv[optind], O_WRONLY)) == -1)
-			err(EXIT_FAILURE, "Failed to open %s", argv[optind]);
+	if (!sink_name || !strcmp("sysrq", sink_name)) {
+		if (optind < argc) {
+			if ((sinkfd = open(argv[optind], O_WRONLY)) == -1)
+				err(EXIT_FAILURE, "Failed to open %s", argv[optind]);
 
-		optind++;
+			optind++;
+		}
+
+		sysrq.sink = sinkfd;
+		sink.ops = &sysrq_sink_ops;
+		sink.ctx = &sysrq;
 	}
 
 	if (optind < argc)
 		err(EXIT_FAILURE, "Found %d unexpected arguments", argc - optind);
 
-	sysrq.sink = sinkfd;
-	sink.ops = &sysrq_sink_ops;
-	sink.ctx = &sysrq;
 	if (process(sourcefd, &sink) < 0)
 		errx(EXIT_FAILURE, "Failure while processing command stream");
 
