@@ -36,7 +36,7 @@ owners:
 
 reviewers:
 
-matches:
+matchers:
 
 openbmc:
 - name: Andrew Jeffery
