@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26ae458_19ad2474",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-18T22:47:50Z",
+      "side": 1,
+      "message": "Is there a timeout built in somewhere here with how long we\u0027ll wait for a dump to complete before triggering a reboot? How long does PHYP give us before they trigger the hard reset?",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8db459_6a424f82",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-18T22:47:50Z",
+      "side": 1,
+      "message": "Please add some comments, not clear to me what\u0027s going on here.",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8929a4_78ae2014",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-18T22:47:50Z",
+      "side": 1,
+      "message": "Not clear to me how the callbacks are occurring in this function. Any reason you don\u0027t just utilize sdbusplus and the utilities that come with it. I guess this is a c++-averse repo? I feel like sdbusplus offers a lot simpler (and more familiar code) to most of us in OpenBMC.",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7d57fa_41413a51",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-18T22:47:50Z",
+      "side": 1,
+      "message": "From the systemd d-bus API doc: \" Note that this does not shut down any services and immediately transitions into the reboot process. These functions are normally only called as last step of shutdown, and should not be called directly.\" I assume given the special circumstances here, you want this \"hard reboot\" behavior? The BMC state code calls the reboot.target and passes the replace-irreversibly option to ensure it doesn\u0027t get interrupted.",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
