@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9234afed_b259d41c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-18T20:04:09Z",
+      "side": 1,
+      "message": "I\u0027m sure this is explained later in the series but it would be nice to have some motivation for this here. You\u0027re enhancing the complexity of the code without any real obvious reason at this point. Without knowing the new use case, it\u0027s difficult to comment on whether there\u0027s a better way to do this in this commit.",
+      "revId": "83623d32354add86fa4d00fe97963ad913ad69d1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d3bd2e_f9778834",
+        "filename": "main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-18T20:04:09Z",
+      "side": 1,
+      "message": "Why is the sourcefd initialized to 0 and the sinkfd is set to 1?",
+      "revId": "83623d32354add86fa4d00fe97963ad913ad69d1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
