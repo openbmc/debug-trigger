@@ -36,6 +36,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19722e24_5ff46e6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T06:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910dee14_1cbb551c",
+      "revId": "83623d32354add86fa4d00fe97963ad913ad69d1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00d3bd2e_f9778834",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I\u0027ll add some comments about this, but:\n\n0 is stdin, 1 is stdout. With that it\u0027s trivial to manually test the behaviour of the application mapping the input characters to e.g. the magic sysrq command characters by just running the application without any arguments and using the keyboard.",
       "parentUuid": "00d3bd2e_f9778834",
+      "revId": "83623d32354add86fa4d00fe97963ad913ad69d1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "decc6674_372898f4",
+        "filename": "main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T06:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb75cfa7_2302e078",
       "revId": "83623d32354add86fa4d00fe97963ad913ad69d1",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
