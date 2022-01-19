@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bd3a1d1_185b5e31",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:27:52Z",
+      "side": 1,
+      "message": "\u003e Is there a timeout built in somewhere here with how long we\u0027ll wait for a dump to complete before triggering a reboot?\n\nNo. I don\u0027t think we have a need for that complexity yet.\n\n\u003e How long does PHYP give us before they trigger the hard reset?\n\n10 minutes.",
+      "parentUuid": "b26ae458_19ad2474",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab8db459_6a424f82",
         "filename": "main.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-18T22:47:50Z",
       "side": 1,
       "message": "Please add some comments, not clear to me what\u0027s going on here.",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7ee90a_e21ab4a2",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:27:52Z",
+      "side": 1,
+      "message": "I\u0027ll add comments and link to the `sd_bus_slot_set_floating(3)`.",
+      "parentUuid": "ab8db459_6a424f82",
       "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74fb9eb9_ae5fc809",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:27:52Z",
+      "side": 1,
+      "message": "\u003e Not clear to me how the callbacks are occurring in this function.\n\nThey\u0027re not. We\u0027re explicitly calling `sd_bus_get_property_string()` above and processing that response. This is done to fetch the current value of the property after we install the match/callback to cover a race condition where the dump has completed before we\u0027ve registered the match on the dump object. If that were to happen we\u0027d never receive the \"completed\" event and we\u0027d just sit here until the BMC is forcefully rebooted e.g. via EXTRST or power-cycle.\n\n\u003e Any reason you don\u0027t just utilize sdbusplus and the utilities that come with it. \n\nFor better or worse I started writing this in C because it was literally just reading from one file descriptor and writing to another. However, it\u0027s now grown. I\u0027ve left it in C because that\u0027s how it started.\n\n\u003e I guess this is a c++-averse repo? \n\nIt\u0027s not C++ averse so much as just evolving what was there.\n\n\u003e I feel like sdbusplus offers a lot simpler (and more familiar code) to most of us in OpenBMC.\n\nSure, but I don\u0027t plan on transitioning it right now.",
+      "parentUuid": "ca8929a4_78ae2014",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b7d57fa_41413a51",
         "filename": "main.c",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2022-01-18T22:47:50Z",
       "side": 1,
       "message": "From the systemd d-bus API doc: \" Note that this does not shut down any services and immediately transitions into the reboot process. These functions are normally only called as last step of shutdown, and should not be called directly.\" I assume given the special circumstances here, you want this \"hard reboot\" behavior? The BMC state code calls the reboot.target and passes the replace-irreversibly option to ensure it doesn\u0027t get interrupted.",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38b33a4_37d248d9",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:27:52Z",
+      "side": 1,
+      "message": "Oh, right, it should be starting the reboot target. I assumed that\u0027s what this did and didn\u0027t read the documentation 😕",
+      "parentUuid": "9b7d57fa_41413a51",
       "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
