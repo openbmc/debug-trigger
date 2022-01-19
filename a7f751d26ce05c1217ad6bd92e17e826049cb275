@@ -16,6 +16,24 @@
       "message": "I think now that this repo has entered the d-bus realm, it makes sense to revisit the decision to write this in c. A move to c++ would allow the use of sdbusplus, which would simplify the code and the ease with which your standard OpenBMC developer could review and debug this repo. It could utilize the new lg2 interfaces in phosphor-logging to get consistent logging. And maybe we could even get rid of the tabs? :) \n\nAnyway, I know I\u0027m biased and I\u0027m sure we can get the needed +1\u0027s on this series as-is as well.",
       "revId": "a7f751d26ce05c1217ad6bd92e17e826049cb275",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debeeed5_f07759ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:32:32Z",
+      "side": 1,
+      "message": "Looking forward to your rewrite :)",
+      "parentUuid": "8aba1e4d_72b34fcf",
+      "revId": "a7f751d26ce05c1217ad6bd92e17e826049cb275",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
