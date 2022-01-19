@@ -22,6 +22,30 @@
       },
       "revId": "8b34da4106d047ee5117a2c7fe65d48a94cb0170",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a029a3_b18fd8b7",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:05:38Z",
+      "side": 1,
+      "message": "Dammit",
+      "parentUuid": "052ed74b_f5aa86ca",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "8b34da4106d047ee5117a2c7fe65d48a94cb0170",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
