@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18768736_001ca1eb",
+        "filename": "main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:17:25Z",
+      "side": 1,
+      "message": "I was going for locality with where it was otherwise assigned.",
+      "parentUuid": "d09e6c00_49bf9c76",
+      "revId": "301b3b26000a2b947bfb99f8051db2ef64376071",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a922a2ba_537ade12",
         "filename": "main.c",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "264e2485_026a16e5",
+        "filename": "main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:17:25Z",
+      "side": 1,
+      "message": "\u003e Is there some help text for this? I wasn\u0027t on the initial reviews so I don\u0027t even know what a \"sink\" is :) \n\nI\u0027ll add some comments. In a conceptual sense the application takes an input event (from a source) and translates that into an output event (on a sink). A sink implementation describes the actions that will be taken in response to an input event. A source implementation describes how to listen for an input event. The set of input events are currently defined as the ASCII values for \u0027D\u0027 (debug) and \u0027R\u0027 (reboot).\n\n\u003e Also, is this an API change? Requiring a new parameter. Could we just default to whatever was used before if not input?\n\nThis isn\u0027t an API (or command-line interface) change. It\u0027s still an option flag, not an argument on the command line, however the option itself requires an argument if it is specified. Valid invocations look like:\n\n 1. $ debug-trigger\n 2. $ debug-trigger --sink\u003dsysrq .../serio_raw0\n\nThe \"required_argument\" in this case is \u0027sysrq\u0027, the option is --sink.\n\nThe defaults remain as they were before this patch.",
+      "parentUuid": "a922a2ba_537ade12",
+      "revId": "301b3b26000a2b947bfb99f8051db2ef64376071",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d936e5f_823a1370",
         "filename": "main.c",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2022-01-18T20:14:29Z",
       "side": 1,
       "message": "I\u0027m struggling with this logic a bit. If sink_name is not \"sysrq\" then we never open the device and sinkfd never gets set...but we still go and use it down on line 151 with it\u0027s default?",
+      "revId": "301b3b26000a2b947bfb99f8051db2ef64376071",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170ceef2_ebc07a5e",
+        "filename": "main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-19T03:17:25Z",
+      "side": 1,
+      "message": "I\u0027ll add some comments. Basically, implement the original behaviour, but also give a name to the original sink implementation (called \u0027sysrq\u0027). So, if:\n\n1. --sink isn\u0027t specified on the commandline, or\n2. --sink\u003dsysrq is specified on the commandline\n\nthen the sink is the sysrq sink.",
+      "parentUuid": "1d936e5f_823a1370",
       "revId": "301b3b26000a2b947bfb99f8051db2ef64376071",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
