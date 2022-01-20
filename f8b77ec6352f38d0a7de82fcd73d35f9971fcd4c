@@ -16,6 +16,24 @@
       "message": "Why note the latest, i.e. c18?",
       "revId": "f8b77ec6352f38d0a7de82fcd73d35f9971fcd4c",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3872233c_4b9b9b18",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-20T20:46:04Z",
+      "side": 1,
+      "message": "Mainly because it\u0027s what I\u0027m familiar with. I haven\u0027t understood the differences to the C18 standard yet, but I can see if it builds with c_std\u003dgnu18.",
+      "parentUuid": "2344212f_92d5b091",
+      "revId": "f8b77ec6352f38d0a7de82fcd73d35f9971fcd4c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
