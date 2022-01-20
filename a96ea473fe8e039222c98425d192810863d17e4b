@@ -34,6 +34,24 @@
       "parentUuid": "9b4f8901_c750a737",
       "revId": "a96ea473fe8e039222c98425d192810863d17e4b",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9060114_a8ac0463",
+        "filename": "systemd/system/debug-trigger@.service",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-01-20T22:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3127aac_64762a68",
+      "revId": "a96ea473fe8e039222c98425d192810863d17e4b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
