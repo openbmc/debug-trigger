@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2344212f_92d5b091",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-20T20:25:50Z",
+      "side": 1,
+      "message": "Why note the latest, i.e. c18?",
+      "revId": "f8b77ec6352f38d0a7de82fcd73d35f9971fcd4c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
