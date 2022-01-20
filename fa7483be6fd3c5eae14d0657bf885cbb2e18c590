@@ -54,6 +54,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c212365c_dd0d1112",
+        "filename": "main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-20T22:09:52Z",
+      "side": 1,
+      "message": "We\u0027ve definitely needed timeouts for other dumps. The BMC is in theory, in a bad state, there\u0027s a good chance the dump is going to get hung up. My main concern is we\u0027ll now get no FFDC. If we had a 5 min timeout, at least we could trigger the default sysrq path and get a basic dump when we come back up. But I\u0027m ok if we want to wait and see if we really hit this or not.",
+      "parentUuid": "49e4ef49_0be58ef7",
+      "revId": "fa7483be6fd3c5eae14d0657bf885cbb2e18c590",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab8db459_6a424f82",
