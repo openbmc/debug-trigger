@@ -546,7 +546,7 @@ int main(int argc, char * const argv[])
 		devid = basename(devpath);
 
 		strncpy(devnode, "/dev/", sizeof(devnode));
-		strncat(devnode, devid, sizeof(devnode));
+		strncat(devnode, devid, sizeof(devnode) - strlen("/dev/"));
 		devnode[PATH_MAX - 1] = '\0';
 
 		if ((sourcefd = open(devnode, O_RDONLY)) == -1)
