@@ -1,2 +1,4 @@
 ACTION=="add", DEVPATH=="*/1e789114.kcs/*", SUBSYSTEM=="serio", RUN{program}+="/bin/sh -c 'echo -n serio_raw > /sys%p/drvctl'"
 ACTION=="add", DEVPATH=="*/1e789114.kcs/*", SUBSYSTEMS=="serio", SUBSYSTEM=="misc", TAG+="systemd", ENV{SYSTEMD_WANTS}+="debug-trigger@"
+ACTION=="add", DEVPATH=="*/12c19114.pcie-kcs/*", SUBSYSTEM=="serio", RUN{program}+="/bin/sh -c 'echo -n serio_raw > /sys%p/drvctl'"
+ACTION=="add", DEVPATH=="*/12c19114.pcie-kcs/*", SUBSYSTEMS=="serio", SUBSYSTEM=="misc", TAG+="systemd", ENV{SYSTEMD_WANTS}+="debug-trigger@"
