@@ -16,6 +16,23 @@
       "message": "This patch depends on https://gerrit.openbmc.org/c/openbmc/phosphor-dbus-interfaces/+/78371 \u0026 its implementation. Should be marked as WIP (until at least we see progress on both of them).",
       "revId": "02a27aa96c5157532c93279b91e74348bb54d9e8",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39451b9d_95355bea",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2025-07-28T13:29:26Z",
+      "side": 1,
+      "message": "@jino - this probably needs its own commit since its a clean up to pass CI.",
+      "revId": "02a27aa96c5157532c93279b91e74348bb54d9e8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
