@@ -31,7 +31,10 @@
  *  dbug-trigger --sink-actions=dbus /dev/serio_raw0
  *	Open /dev/serio_raw0 as the source and configure the 'dbus' set of sink actions. When 'D' is
  *	read from /dev/serio_raw0 create a dump via phosphor-debug-collector by calling through its
- *	D-Bus interface, then reboot the system by starting systemd's 'reboot.target'
+ *	D-Bus interface, then reboot the system by starting systemd's 'reboot.target'. When 'F' is
+ *	read from /dev/serio_raw0 request a failover to the redundant BMC by calling StartFailover
+ *	on the xyz.openbmc_project.Control.Failover D-Bus interface. Failover is only supported
+ *	with the 'dbus' set of sink actions.
  */
 #define _GNU_SOURCE
 
@@ -81,6 +84,7 @@ struct debug_source_dbus {
 struct debug_sink_ops {
 	void (*debug)(void *ctx);
 	void (*reboot)(void *ctx);
+	void (*failover)(void *ctx);
 };
 
 struct debug_sink {
@@ -134,6 +138,12 @@ static void sysrq_sink_reboot(void *ctx)
 	}
 }
 
+static void sysrq_sink_failover(void *ctx __attribute__((unused)))
+{
+	/* There's no sysrq action for failover, it requires the 'dbus' sink actions */
+	warnx("Failover is not supported with the 'sysrq' sink actions, use --sink-actions=dbus");
+}
+
 static int basic_source_poll(void *ctx, char *op)
 {
 	struct debug_source_basic *basic = ctx;
@@ -155,6 +165,7 @@ static int basic_source_poll(void *ctx, char *op)
 const struct debug_sink_ops sysrq_sink_ops = {
 	.debug = sysrq_sink_debug,
 	.reboot = sysrq_sink_reboot,
+	.failover = sysrq_sink_failover,
 };
 
 const struct debug_source_ops basic_source_ops = {
@@ -378,6 +389,35 @@ static void dbus_sink_reboot(void *ctx)
 	}
 }
 
+static void dbus_sink_failover(void *ctx)
+{
+	sd_bus_error ret_error = SD_BUS_ERROR_NULL;
+	struct debug_sink_dbus *dbus = ctx;
+	sd_bus_message *reply = NULL;
+	int rc;
+
+	/* The request arrives over KCS from the host, so identify the host as the requester */
+	rc = sd_bus_call_method(dbus->bus,
+				"xyz.openbmc_project.State.BMC.Redundancy",
+				"/xyz/openbmc_project/state/bmc0",
+				"xyz.openbmc_project.Control.Failover",
+				"StartFailover",
+				&ret_error,
+				&reply,
+				"sa{sv}",
+				"xyz.openbmc_project.Control.Failover.Requester.Host",
+				0);
+	if (rc < 0) {
+		warnx("Failed to call StartFailover: %s",
+		      ret_error.message ? ret_error.message : strerror(-rc));
+	} else {
+		warnx("StartFailover successfully triggered");
+	}
+
+	sd_bus_error_free(&ret_error);
+	sd_bus_message_unref(reply);
+}
+
 static int dbus_source_poll(void *ctx, char *op)
 {
 	struct debug_source_dbus *dbus = ctx;
@@ -448,6 +488,11 @@ static void dbus_sink_reboot(void *ctx)
 	warnx("%s: Configured without systemd, dbus sinks disabled", __func__);
 }
 
+static void dbus_sink_failover(void *ctx)
+{
+	warnx("%s: Configured without systemd, dbus sinks disabled", __func__);
+}
+
 static int dbus_source_poll(void *ctx, char *op)
 {
 	errx(EXIT_FAILURE, "Configured without systemd, dbus sources disabled", __func__);
@@ -457,6 +502,7 @@ static int dbus_source_poll(void *ctx, char *op)
 const struct debug_sink_ops dbus_sink_ops = {
 	.debug = dbus_sink_debug,
 	.reboot = dbus_sink_reboot,
+	.failover = dbus_sink_failover,
 };
 
 const struct debug_source_ops dbus_source_ops = {
@@ -477,6 +523,10 @@ static int process(struct debug_source *source, struct debug_sink *sink)
 		case 'R':
 			warnx("Reboot action triggered\n");
 			sink->ops->reboot(sink->ctx);
+			break;
+		case 'F':
+			warnx("Failover action triggered\n");
+			sink->ops->failover(sink->ctx);
 			break;
 		default:
 			warnx("Unexpected command: 0x%02x (%c)", command, command);
