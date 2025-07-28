@@ -81,6 +81,7 @@ struct debug_source_dbus {
 struct debug_sink_ops {
 	void (*debug)(void *ctx);
 	void (*reboot)(void *ctx);
+	void (*failover)(void *ctx);
 };
 
 struct debug_sink {
@@ -378,6 +379,37 @@ static void dbus_sink_reboot(void *ctx)
 	}
 }
 
+static void dbus_sink_failover(void *ctx)
+{
+	sd_bus_error ret_error = SD_BUS_ERROR_NULL;
+
+	struct debug_sink_dbus *dbus = ctx;
+	sd_bus_message *reply = NULL;
+	int rc;
+
+	rc = sd_bus_call_method(
+		dbus->bus,
+		"xyz.openbmc_project.State.BMC.Redundancy",
+		"/xyz/openbmc_project/state/bmc0",
+		"xyz.openbmc_project.Control.Failover",
+		"StartFailover",
+		&ret_error,
+		&reply,
+		"a{sv}", 0);
+
+	if (rc < 0)
+	{
+		warnx("Failed to call StartFailover: %s", ret_error.message);
+	}
+	else
+	{
+		warnx("StartFailover successfully triggered");
+	}
+
+	sd_bus_error_free(&ret_error);
+	sd_bus_message_unref(reply);
+}
+
 static int dbus_source_poll(void *ctx, char *op)
 {
 	struct debug_source_dbus *dbus = ctx;
@@ -457,6 +489,7 @@ static int dbus_source_poll(void *ctx, char *op)
 const struct debug_sink_ops dbus_sink_ops = {
 	.debug = dbus_sink_debug,
 	.reboot = dbus_sink_reboot,
+	.failover = dbus_sink_failover,
 };
 
 const struct debug_source_ops dbus_source_ops = {
@@ -478,6 +511,11 @@ static int process(struct debug_source *source, struct debug_sink *sink)
 			warnx("Reboot action triggered\n");
 			sink->ops->reboot(sink->ctx);
 			break;
+		case 'F':
+			warnx("Failover action triggered\n");
+			sink->ops->failover(sink->ctx);
+			break;
+
 		default:
 			warnx("Unexpected command: 0x%02x (%c)", command, command);
 		}
