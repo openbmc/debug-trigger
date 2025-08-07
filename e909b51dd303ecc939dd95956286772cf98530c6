@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb6a383_46e76c4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-07T00:24:23Z",
+      "side": 1,
+      "message": "The files affected are evident in the diff itself. Please try to avoid listing them in the commit message. Rather, talk about the motivations for doing what you\u0027re doing (the \"why\").\n\nBroadly, the guidelines from Linux are battle-tested and worth reading:\n\nhttps://docs.kernel.org/process/submitting-patches.html#describe-your-changes",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "e909b51dd303ecc939dd95956286772cf98530c6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3b569e_a621f883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-07T00:24:23Z",
+      "side": 1,
+      "message": "Please write in the imperative mood. It\u0027s not necessary to say \"This commit\" - the commit message provides that context already.\n\n\u003e Describe your changes in imperative mood, e.g. “make xyzzy do frotz” instead of “[This patch] makes xyzzy do frotz” or “[I] changed xyzzy to do frotz”, as if you are giving orders to the codebase to change its behaviour.\n\nhttps://docs.kernel.org/process/submitting-patches.html#describe-your-changes",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "e909b51dd303ecc939dd95956286772cf98530c6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2591a8_48e3ffad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-07T00:24:23Z",
+      "side": 1,
+      "message": "This bit is the substance of what you\u0027re doing. It\u0027s fine if this is the body of the commit message on its own:\n\n\u003e Align with current meson formatting conventions.",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "e909b51dd303ecc939dd95956286772cf98530c6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
