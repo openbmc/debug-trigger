@@ -16,6 +16,24 @@
       "message": "Ideally your Gerrit Name matches your CCLA, Signed-Off name.. Thanks!!\nhttps://gerrit.openbmc.org/c/openbmc/bmcweb/+/86150",
       "revId": "90550631988b41092812560a967d0ebb1cbd1fa8",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b322dea_2fc2f7bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002348
+      },
+      "writtenOn": "2026-01-23T08:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f07de6_98c51929",
+      "revId": "90550631988b41092812560a967d0ebb1cbd1fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
